@@ -1,0 +1,29 @@
+﻿<Window x:Class="Pricimage.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Pricimage"
+        mc:Ignorable="d"
+        Title="Pricimage" Height="450" Width="800">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="3*" />
+			<ColumnDefinition Width="1*" />
+		</Grid.ColumnDefinitions>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="1*" />
+				<RowDefinition Height="4*" />
+			</Grid.RowDefinitions>
+			<StackPanel Grid.Row="1">
+				<Label Content="Xem trước" Height="26" />
+				<Image x:Name="imgPreview" HorizontalAlignment="Center" Source="/Images/05424654.jpg" VerticalAlignment="Center" Margin="30,0,30,0" Stretch="Uniform"/>
+			</StackPanel>
+		</Grid>
+		<StackPanel Grid.Column="1">
+			<Label Grid.Column="1" Content="Lịch sử" HorizontalAlignment="Center"/>
+			<ListBox x:Name="lstHistory" Height="1"></ListBox>
+		</StackPanel>
+	</Grid>
+</Window>
