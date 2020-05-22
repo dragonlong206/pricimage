@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pricimage"
         mc:Ignorable="d"
-        Title="Pricimage" Height="600" Width="1200">
+        Title="Pricimage" Height="600" Width="1200" WindowStartupLocation="CenterScreen" PreviewKeyUp="Window_PreviewKeyUp">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="120" />
+                <RowDefinition Height="220" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackPanel Margin="5,10,5,10">
@@ -23,47 +23,43 @@
                         <ColumnDefinition Width="2*" />
                         <ColumnDefinition Width="1*" />
                         <ColumnDefinition Width="2*" />
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="2*" />
                     </Grid.ColumnDefinitions>
-                    <Label Content="Mã phụ" VerticalAlignment="Center" />
-                    <ComboBox x:Name="cboCode" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="150" Height="40" Margin="5,0,5,0"/>
-                    <Label Content="Giá cũ" Grid.Column="2" VerticalAlignment="Center" />
-                    <TextBox x:Name="txtOldPrice" PreviewTextInput="NumberValidationTextBox" Grid.Column="3" Height="40" Margin="5,0,5,0" />
-                    <Label Content="Giá mới" Grid.Column="4" VerticalAlignment="Center" />
-                    <TextBox x:Name="txtNewPrice" PreviewTextInput="NumberValidationTextBox" Grid.Column="5" Height="40" Margin="5,0,5,0" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Mã phụ" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <ComboBox x:Name="cboCode" Grid.Column="1" Grid.ColumnSpan="5" IsTextSearchEnabled="True" VerticalAlignment="Center" VerticalContentAlignment="Center" MinWidth="150" Text="Chọn mã" Height="40" Margin="5,5,5,5" IsEditable="True" SelectionChanged="cboCode_SelectionChanged"/>
+                    <Label Content="Giá cũ" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="txtOldPrice" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="1" Height="40" Margin="5,5,5,5" KeyUp="HandleEnterKey" TextChanged="txtOldPrice_TextChanged" GotFocus="txtOldPrice_GotFocus" />
+                    <Label Content="Giá mới" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="txtNewPrice" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" Grid.Row="1" Grid.Column="3" Height="40" Margin="5,5,5,5" KeyUp="HandleEnterKey" TextChanged="txtNewPrice_TextChanged" GotFocus="txtNewPrice_GotFocus" />
+                    <Label Content="Ghi chú" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" />
+                    <TextBox x:Name="txtNote" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Margin="5,5,5,5" VerticalContentAlignment="Center" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Height="40" KeyUp="HandleEnterKey" TextChanged="txtNote_TextChanged" GotFocus="txtNote_GotFocus"/>
                 </Grid>
                 <StackPanel Orientation="Horizontal" Margin="5,10,5,10" HorizontalAlignment="Right">
-                    <Button x:Name="btnApply" Height="40" Width="100">Áp dụng (Enter)</Button>
-                    <Button x:Name="btnCopy" Height="40" Width="100" Margin="10,0,10,0">Copy (Ctrl + C)</Button>
-                    <Button x:Name="btnSave" Height="40" Width="100">Lưu (Ctrl + S)</Button>
+                    <Button x:Name="btnCopy" Height="40" Width="100" Margin="10,0,10,0" Click="btnCopy_Click">Copy (Ctrl + C)</Button>
+                    <Button x:Name="btnSave" Height="40" Width="100" Click="btnSave_Click">Lưu (Ctrl + S)</Button>
                 </StackPanel>
             </StackPanel>
             <StackPanel Grid.Row="1">
-                <Label Content="Xem trước" Height="26" />
-                <Image x:Name="imgPreview" HorizontalAlignment="Center" Source="/Images/05424654.jpg" VerticalAlignment="Center" Margin="30,0,30,0" Stretch="Uniform"/>
+                <Label Content="Xem trước" Height="26" Margin="5,0,5,0" />
+                <Image x:Name="imgPreview" Height="300" />
             </StackPanel>
         </Grid>
         <StackPanel Grid.Column="1">
             <Label Grid.Column="1" Content="Lịch sử" HorizontalAlignment="Center"/>
-            <ListBox x:Name="lstHistory" Margin="10,0,10,0" HorizontalContentAlignment="Stretch">
+            <ListBox x:Name="lstHistory" Margin="10,0,10,0" HorizontalContentAlignment="Stretch" SelectionChanged="lstHistory_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="50"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="50"/>
-                                <ColumnDefinition Width="50"/>
                             </Grid.ColumnDefinitions>
                             <Image Source="{Binding ImageSource}" Stretch="Fill"/>
                             <Label Content="{Binding Content}" Grid.Column="1"/>
-                            <Button Grid.Column="2" Width="40" BorderThickness="0" Background="White" Height="40" Margin="5,0,5,0">
-                                <Image Source="/Resources/copy-80.png" />
-                            </Button>
-                            <Button Grid.Column="3" Width="40" BorderThickness="0" Background="White" Height="40" Margin="5,0,5,0">
-                                <Image Source="/Resources/download-80.png" />
-                            </Button>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

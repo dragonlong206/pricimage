@@ -4,6 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>price-64.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,7 @@
     <None Remove="Images\05424654.jpg" />
     <None Remove="Resources\copy-80.png" />
     <None Remove="Resources\download-80.png" />
+    <None Remove="Resources\price-64.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +27,7 @@
   <ItemGroup>
     <Resource Include="Resources\copy-80.png" />
     <Resource Include="Resources\download-80.png" />
+    <Resource Include="Resources\price-64.png" />
   </ItemGroup>
 
 </Project>
