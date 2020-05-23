@@ -5,8 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>price-64.ico</ApplicationIcon>
+    <Authors>LongLe</Authors>
+    <Company>LongLe</Company>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <None Remove="Images\02324590.jpg" />
     <None Remove="Images\05424654.jpg" />
